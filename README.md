@@ -1,4 +1,4 @@
-# Obsidian Anti-Extension.md Plugin
+# Obsidian Block-Extension.md Plugin
 
 This plugin blocks the creation of Markdown files with filenames containing undesired extensions, such as `.pdf.md`.
 
