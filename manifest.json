@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+    "author": "uoFishbox",
+    "authorUrl": "https://obsidian.md",
+    "description": "Prevents the creation of markdown files ending in `.pdf.md`.",
+    "fundingUrl": "https://obsidian.md/pricing",
+    "id": "obsidian-anti-pdfmd",
+    "isDesktopOnly": false,
+    "minAppVersion": "0.15.0",
+    "name": "Anti PDFmd",
+    "version": "1.0.0"
 }
