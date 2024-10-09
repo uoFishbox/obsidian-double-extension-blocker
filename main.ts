@@ -1,15 +1,13 @@
 import { App, Plugin, PluginSettingTab, Setting } from "obsidian";
 import { patchFile } from "./createFilePatch";
 
-// Remember to rename these classes and interfaces!
-
-interface MyPluginSettings {
-	mySetting: string;
+interface Settings {
+	extensions: Array<string>;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
+const DEFAULT_SETTINGS: Settings = {
+	extensions: ["pdf", "jpg", "jpeg", "png", "webp"],
+};
 
 export default class BlockDoubleExt extends Plugin {
 	settings: Settings;
@@ -58,14 +56,17 @@ class SettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName("Setting #1")
-			.setDesc("It's a secret")
-			.addText((text) =>
+			.setName("Target extensions to block creation")
+			.setDesc(
+				"`. {extension}.md` file format will be blocked. Consider the list of extensions specified below."
+			)
+			// add newline
+			.addTextArea((text) =>
 				text
-					.setPlaceholder("Enter your secret")
-					.setValue(this.plugin.settings.mySetting)
+					// .setPlaceholder("Enter your secret")
+					.setValue(this.plugin.settings.extensions.join(","))
 					.onChange(async (value) => {
-						this.plugin.settings.mySetting = value;
+						this.plugin.settings.extensions = value.split(",");
 						await this.plugin.saveSettings();
 					})
 			);
