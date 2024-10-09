@@ -1,10 +1,10 @@
 # Obsidian Prevent Double Extension Plugin
 
-This plugin blocks the creation of files with double extensions to avoid double extensions such as `.pdf.md`.
+This plugin prevents the creation of files with double extensions such as `.jpg.md`.
 
 ## Motivation
 
-In Obsidian, when an attachment file such as a `.pdf` cannot be found in the Vault, it becomes an "unresolved link." When this link is opened, an undesired markdown file with an extension like `.pdf.md` is created.
+In Obsidian, when an attachment file such as a `.jpg` cannot be found in the Vault, it becomes an "unresolved link." When this link is opened, an undesired markdown file with an extension like `.jpg.md` is created.
 
 ![gif of how the plugin works](https://i.gyazo.com/175ca223db9d8e703179d9d56e014e02.gif)
 
