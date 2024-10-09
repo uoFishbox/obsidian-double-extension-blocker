@@ -8,7 +8,8 @@ In Obsidian, when an attachment file such as a `.jpg` cannot be found in the Vau
 
 ![gif of how the plugin works](https://i.gyazo.com/175ca223db9d8e703179d9d56e014e02.gif)
 
-This plugin monitors file creation and blocks the creation of files with double extension in the format `.{extension}.md`.In addition, it prevents the creation of accidental double-extension files by core and community plugins.
+This plugin monitors file creation and blocks the creation of files with double extension in the format `.{extension}.md`.
+In addition, it prevents the creation of accidental double-extension files by core and community plugins.
 
 ## Features
 
