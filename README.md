@@ -1,6 +1,6 @@
 # Obsidian Prevent Double Extension Plugin
 
-This plugin blocks the creation of Markdown files with filenames containing undesired extensions, such as `.pdf.md`.
+This plugin blocks the creation of files with double extensions to avoid double extensions such as `.pdf.md`.
 
 ## Motivation
 
