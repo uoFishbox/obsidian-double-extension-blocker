@@ -5,6 +5,8 @@ import BlockDoubleExt from "./main";
 export const patchFile = (plugin: BlockDoubleExt) => {
 	const vaultPrototype = Vault.prototype;
 
+	const targetextensions = plugin.settings.extensions;
+
 	plugin.register(
 		around(vaultPrototype, {
 			create(original) {
@@ -13,13 +15,18 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 					data: string,
 					options?: DataWriteOptions
 				) {
+					let ext = "";
 					try {
-						if (path.endsWith(".pdf.md")) {
-							stopFunction();
+						for (const extension of targetextensions) {
+							if (path.endsWith("." + extension + ".md")) {
+								ext = extension;
+								stopFunction(ext);
+							}
 						}
+
 						return original.call(this, path, data, options);
 					} catch (error) {
-						handleError(error);
+						handleError(plugin, error, ext);
 					}
 				};
 			},
@@ -29,13 +36,18 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 					data: ArrayBuffer,
 					options?: DataWriteOptions
 				) {
+					let ext = "";
 					try {
-						if (path.endsWith(".pdf.md")) {
-							stopFunction();
+						for (const extension of targetextensions) {
+							if (path.endsWith("." + extension + ".md")) {
+								ext = extension;
+								stopFunction(ext);
+							}
 						}
+
 						return original.call(this, path, data, options);
 					} catch (error) {
-						handleError(error);
+						handleError(plugin, error, ext);
 					}
 				};
 			},
@@ -43,19 +55,25 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 	);
 };
 
-function stopFunction(): void {
+function stopFunction(blockedext: string): void {
 	throw new Error(
-		"Blocked the creation of a file with the .pdf.md extension."
+		"Blocked the creation of a file with the ." +
+			blockedext +
+			".md extension."
 	);
 }
 
-function handleError(error: unknown): void {
-	if (error instanceof Error) {
+function handleError(
+	plugin: BlockDoubleExt,
+	error: unknown,
+	blockedext: string
+): void {
+	if (error && plugin.settings.enableNotice) {
 		new Notice(
-			"Blocked the creation of a file with the .pdf.md extension.",
+			"Blocked the creation of a file with the ." +
+				blockedext +
+				".md extension.",
 			1500
 		);
-	} else {
-		new Notice("Unknown error occurred.", 1500);
 	}
 }
