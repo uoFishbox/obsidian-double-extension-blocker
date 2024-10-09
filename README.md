@@ -7,4 +7,4 @@ This plugin prevents the automatic creation of `.pdf.md` files when opening unre
 - Customizable: Add other file extensions to prevent `.md` creation
 - Compatible with desktop and mobile devices
 
-If you temporarily need to create a note in the `{extension}.md` format, please create the note under a different name and then rename it accordingly.
+If you temporarily need to create a note in the `.{extension}.md` format, please create the note under a different name and then rename it accordingly.
