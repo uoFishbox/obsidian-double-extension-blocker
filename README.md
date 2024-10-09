@@ -6,7 +6,7 @@ This plugin blocks the creation of Markdown files with filenames containing unde
 
 In Obsidian, when an attachment file such as a `.pdf` cannot be found in the Vault, it becomes an "unresolved link." When this link is opened, an undesired markdown file with an extension like `.pdf.md` is created.
 
-This plugin monitors file creation and blocks the creation of files with double extensions in the format `.{extension}.md`.
+This plugin monitors file creation and blocks the creation of files with double extension in the format `.{extension}.md`.
 
 ## Features
 
