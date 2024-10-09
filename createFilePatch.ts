@@ -1,8 +1,8 @@
 import { around } from "monkey-around";
 import { DataWriteOptions, Notice, Vault } from "obsidian";
-import AntiAttachmentMd from "./main";
+import BlockDoubleExt from "./main";
 
-export const patchFile = (plugin: AntiAttachmentMd) => {
+export const patchFile = (plugin: BlockDoubleExt) => {
 	const vaultPrototype = Vault.prototype;
 
 	plugin.register(

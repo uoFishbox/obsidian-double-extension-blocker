@@ -11,7 +11,7 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
 	mySetting: 'default'
 }
 
-export default class AntiAttachmentMd extends Plugin {
+export default class BlockDoubleExt extends Plugin {
 	settings: Settings;
 
 	async onload() {
@@ -45,9 +45,9 @@ export default class AntiAttachmentMd extends Plugin {
 }
 
 class SettingTab extends PluginSettingTab {
-	plugin: AntiAttachmentMd;
+	plugin: BlockDoubleExt;
 
-	constructor(app: App, plugin: AntiAttachmentMd) {
+	constructor(app: App, plugin: BlockDoubleExt) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
