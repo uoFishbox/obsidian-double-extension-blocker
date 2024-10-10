@@ -4,7 +4,7 @@ import { Settings } from "./types";
 
 export const DEFAULT_SETTINGS: Settings = {
 	extensions: ["pdf", "jpg", "jpeg", "png", "webp"],
-	enableNotice: true,
+	noticeEnabled: true,
 };
 
 export class SettingTab extends PluginSettingTab {
@@ -42,9 +42,9 @@ export class SettingTab extends PluginSettingTab {
 
 			.addToggle((toggle) =>
 				toggle
-					.setValue(this.plugin.settings.enableNotice)
+					.setValue(this.plugin.settings.noticeEnabled)
 					.onChange(async (value) => {
-						this.plugin.settings.enableNotice = value;
+						this.plugin.settings.noticeEnabled = value;
 						await this.plugin.saveSettings();
 					})
 			);

@@ -68,7 +68,7 @@ function handleError(
 	error: unknown,
 	blockedext: string
 ): void {
-	if (error && plugin.settings.enableNotice) {
+	if (error && plugin.settings.noticeEnabled) {
 		new Notice(
 			"Blocked the creation of a file with the ." +
 				blockedext +
