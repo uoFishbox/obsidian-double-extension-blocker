@@ -23,13 +23,12 @@ export class SettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName("Target extensions to block creation")
 			.setDesc(
-				"`. {extension}.md` file format will be blocked. Consider the list of extensions specified below."
+				"Blocks the creation of files with {extension}.md at the end of the filename."
 			)
 			// add description as markdown
 
 			.addTextArea((text) =>
 				text
-					// .setPlaceholder("Enter your secret")
 					.setValue(this.plugin.settings.extensions.join(","))
 					.onChange(async (value) => {
 						this.plugin.settings.extensions = value.split(",");
