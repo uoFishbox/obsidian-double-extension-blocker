@@ -17,4 +17,4 @@ Also, the creation of accidental double extension files by core and community pl
 - **Customizable Extension List**: You can define the extensions you want to target.
 - **Works on Both Desktop and Mobile**: The plugin is compatible with both mobile and desktop versions of Obsidian.
 
-**Note**: Renaming or moving files from outside the vault is not covered by the file monitor. If you need to create a note with a filename in the `.{extension}.md` format temporarily, you can create the note under a different name first and rename it manually afterward.
+**Note**: This plugin does not affect already existing files.
