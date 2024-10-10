@@ -1,6 +1,6 @@
 import { Notice, Plugin } from "obsidian";
 import { applyFilePatch } from "./createFilePatch";
-import { DEFAULT_SETTINGS, DoubleExtensionSettingTab } from "./settings";
+import { DEFAULT_SETTINGS, DoubleExtensionBlockerSettingTab } from "./settings";
 import { Settings } from "./types";
 
 export default class DoubleExtensionBlocker extends Plugin {
@@ -11,7 +11,9 @@ export default class DoubleExtensionBlocker extends Plugin {
 
 		this.applyObsidianPatch();
 
-		this.addSettingTab(new DoubleExtensionSettingTab(this.app, this));
+		this.addSettingTab(
+			new DoubleExtensionBlockerSettingTab(this.app, this)
+		);
 	}
 
 	onunload() {}

@@ -7,7 +7,7 @@ export const DEFAULT_SETTINGS: Settings = {
 	noticeEnabled: true,
 };
 
-export class DoubleExtensionSettingTab extends PluginSettingTab {
+export class DoubleExtensionBlockerSettingTab extends PluginSettingTab {
 	plugin: DoubleExtensionBlocker;
 
 	constructor(app: App, plugin: DoubleExtensionBlocker) {
