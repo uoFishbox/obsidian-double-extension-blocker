@@ -1,24 +1,24 @@
 import { Plugin } from "obsidian";
-import { patchFile } from "./createFilePatch";
-import { DEFAULT_SETTINGS, SettingTab } from "./settings";
+import { applyFilePatch } from "./createFilePatch";
+import { DEFAULT_SETTINGS, DoubleExtensionSettingTab } from "./settings";
 import { Settings } from "./types";
 
-export default class BlockDoubleExt extends Plugin {
+export default class DoubleExtensionBlocker extends Plugin {
 	settings: Settings;
 
 	async onload() {
 		await this.loadSettings();
 
-		this.patchObsidian();
+		this.applyObsidianPatch();
 
-		this.addSettingTab(new SettingTab(this.app, this));
+		this.addSettingTab(new DoubleExtensionSettingTab(this.app, this));
 	}
 
 	onunload() {}
 
-	private patchObsidian() {
+	private applyObsidianPatch() {
 		this.app.workspace.onLayoutReady(() => {
-			patchFile(this);
+			applyFilePatch(this);
 		});
 	}
 

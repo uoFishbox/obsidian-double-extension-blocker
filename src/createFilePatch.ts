@@ -1,11 +1,11 @@
 import { around } from "monkey-around";
 import { DataWriteOptions, Notice, Vault } from "obsidian";
-import BlockDoubleExt from "./main";
+import DoubleExtensionBlocker from "./main";
 
-export const patchFile = (plugin: BlockDoubleExt) => {
+export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 	const vaultPrototype = Vault.prototype;
 
-	const targetextensions = plugin.settings.extensions;
+	const targetextensions = plugin.settings.targetExtensions;
 
 	plugin.register(
 		around(vaultPrototype, {
@@ -20,13 +20,13 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 						for (const extension of targetextensions) {
 							if (path.endsWith("." + extension + ".md")) {
 								ext = extension;
-								stopFunction(ext);
+								blockFileCreation(ext);
 							}
 						}
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						handleError(plugin, error, ext);
+						NotifyBlockedFileCreation(plugin, error, ext);
 					}
 				};
 			},
@@ -41,13 +41,13 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 						for (const extension of targetextensions) {
 							if (path.endsWith("." + extension + ".md")) {
 								ext = extension;
-								stopFunction(ext);
+								blockFileCreation(ext);
 							}
 						}
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						handleError(plugin, error, ext);
+						NotifyBlockedFileCreation(plugin, error, ext);
 					}
 				};
 			},
@@ -55,14 +55,14 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 	);
 };
 
-function stopFunction(blockedext: string): void {
+function blockFileCreation(blockedext: string): void {
 	throw new Error(
 		`The creation of a file with the extension '.${blockedext}.md' is blocked`
 	);
 }
 
-function handleError(
-	plugin: BlockDoubleExt,
+function NotifyBlockedFileCreation(
+	plugin: DoubleExtensionBlocker,
 	error: unknown,
 	blockedext: string
 ): void {

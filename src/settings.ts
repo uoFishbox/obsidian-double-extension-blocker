@@ -1,16 +1,16 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
-import BlockDoubleExt from "./main";
+import DoubleExtensionBlocker from "./main";
 import { Settings } from "./types";
 
 export const DEFAULT_SETTINGS: Settings = {
-	extensions: ["pdf", "jpg", "jpeg", "png", "webp"],
+	targetExtensions: ["pdf", "jpg", "jpeg", "png", "webp"],
 	noticeEnabled: true,
 };
 
-export class SettingTab extends PluginSettingTab {
-	plugin: BlockDoubleExt;
+export class DoubleExtensionSettingTab extends PluginSettingTab {
+	plugin: DoubleExtensionBlocker;
 
-	constructor(app: App, plugin: BlockDoubleExt) {
+	constructor(app: App, plugin: DoubleExtensionBlocker) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -29,9 +29,10 @@ export class SettingTab extends PluginSettingTab {
 
 			.addTextArea((text) =>
 				text
-					.setValue(this.plugin.settings.extensions.join(","))
+					.setValue(this.plugin.settings.targetExtensions.join(","))
 					.onChange(async (value) => {
-						this.plugin.settings.extensions = value.split(",");
+						this.plugin.settings.targetExtensions =
+							value.split(",");
 						await this.plugin.saveSettings();
 					})
 			);

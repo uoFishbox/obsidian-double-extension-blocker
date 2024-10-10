@@ -1,4 +1,4 @@
 export interface Settings {
-	extensions: Array<string>;
+	targetExtensions: Array<string>;
 	noticeEnabled: boolean;
 }
