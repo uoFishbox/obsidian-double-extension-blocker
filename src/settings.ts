@@ -21,12 +21,11 @@ export class DoubleExtensionBlockerSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
+			// !todo: rewrite following description
 			.setName("Target extensions to block creation")
 			.setDesc(
 				"Blocks the creation of files with {extension}.md at the end of the filename."
 			)
-			// add description as markdown
-
 			.addTextArea((text) =>
 				text
 					.setValue(this.plugin.settings.targetExtensions.join(","))

@@ -33,10 +33,10 @@ export default class DoubleExtensionBlocker extends Plugin {
 	}
 
 	async saveSettings() {
+		await this.normalizeSettings(this.settings);
 		if (!this.validateSettings(this.settings)) {
 			return;
 		}
-		this.normalizeSettings(this.settings);
 
 		await this.saveData(this.settings);
 	}
@@ -63,12 +63,6 @@ export default class DoubleExtensionBlocker extends Plugin {
 				);
 				return false;
 			}
-			if (extension === "md") {
-				new Notice(
-					`The '.md' extension is ignored by this plugin because it is properly handled by Obsidian.`
-				);
-				return false;
-			}
 
 			//check if the extension included in the list of strings that are not allowed to be included in the file name
 			for (const forbiddenString of forbiddenStringsSet) {
@@ -82,7 +76,7 @@ export default class DoubleExtensionBlocker extends Plugin {
 		}
 		return true;
 	}
-	normalizeSettings(settings: Settings) {
+	async normalizeSettings(settings: Settings) {
 		// convert all extensions to lowercase
 		settings.targetExtensions = settings.targetExtensions.map((ext) =>
 			ext.toLowerCase()
@@ -92,10 +86,6 @@ export default class DoubleExtensionBlocker extends Plugin {
 		// remove empty strings
 		settings.targetExtensions = settings.targetExtensions.filter(
 			(ext) => ext !== ""
-		);
-		// remove ".md" extension
-		settings.targetExtensions = settings.targetExtensions.filter(
-			(ext) => ext !== "md"
 		);
 	}
 }

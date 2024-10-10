@@ -5,7 +5,10 @@ import DoubleExtensionBlocker from "./main";
 export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 	const vaultPrototype = Vault.prototype;
 
-	const targetextensions = plugin.settings.targetExtensions;
+	// Remove "md" from the list of target extensions
+	const targetextensions = plugin.settings.targetExtensions.filter(
+		(ext) => ext !== "md"
+	);
 
 	plugin.register(
 		around(vaultPrototype, {
