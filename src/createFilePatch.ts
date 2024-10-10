@@ -18,7 +18,11 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 					let ext = "";
 					try {
 						for (const extension of targetextensions) {
-							if (path.endsWith("." + extension + ".md")) {
+							if (
+								path
+									.toLowerCase()
+									.endsWith("." + extension + ".md")
+							) {
 								ext = extension;
 								blockFileCreation(ext);
 							}
