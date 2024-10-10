@@ -11,7 +11,6 @@ export default class BlockDoubleExt extends Plugin {
 
 		this.patchObsidian();
 
-		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new SettingTab(this.app, this));
 	}
 
