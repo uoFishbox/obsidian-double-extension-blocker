@@ -1,7 +1,7 @@
 import { Plugin } from "obsidian";
 import { patchFile } from "./createFilePatch";
-import { SettingTab } from "./settings";
-import { DEFAULT_SETTINGS, Settings } from "./types";
+import { DEFAULT_SETTINGS, SettingTab } from "./settings";
+import { Settings } from "./types";
 
 export default class BlockDoubleExt extends Plugin {
 	settings: Settings;

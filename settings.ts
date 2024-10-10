@@ -1,5 +1,11 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
 import BlockDoubleExt from "./main";
+import { Settings } from "./types";
+
+export const DEFAULT_SETTINGS: Settings = {
+	extensions: ["pdf", "jpg", "jpeg", "png", "webp"],
+	enableNotice: true,
+};
 
 export class SettingTab extends PluginSettingTab {
 	plugin: BlockDoubleExt;
