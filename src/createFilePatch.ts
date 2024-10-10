@@ -57,9 +57,7 @@ export const patchFile = (plugin: BlockDoubleExt) => {
 
 function stopFunction(blockedext: string): void {
 	throw new Error(
-		"Blocked the creation of a file with the ." +
-			blockedext +
-			".md extension."
+		`The creation of a file with the extension '.${blockedext}.md' is blocked`
 	);
 }
 
@@ -70,9 +68,7 @@ function handleError(
 ): void {
 	if (error && plugin.settings.noticeEnabled) {
 		new Notice(
-			"Blocked the creation of a file with the ." +
-				blockedext +
-				".md extension.",
+			`The creation of a file with the extension '.${blockedext}.md' is blocked`,
 			1500
 		);
 	}
