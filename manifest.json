@@ -1,10 +1,9 @@
 {
     "author": "uoFishbox",
-    "authorUrl": "https://github.com/uoFishbox/obsidian-block-double-extension-plugin",
+    "authorUrl": "https://github.com/uoFishbox/obsidian-double-extension-blocker",
     "description": "This plugin blocks the creation of Markdown files with filenames containing undesired extensions, such as `.pdf.md`.",
-    "id": "obsidian-prevent-double-extension",
+    "id": "obsidian-double-extension-blocker",
     "isDesktopOnly": false,
-    "minAppVersion": "0.15.0",
-    "name": "Prevent Double Extension",
+    "name": "Double Extension Blocker",
     "version": "1.0.0"
 }
