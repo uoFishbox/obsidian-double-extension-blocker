@@ -1,9 +1,6 @@
 # Obsidian Double Extension Blocker
 
-# Obsidian Double Extension Blocker
-
-This plugin blocks the creation of files with double extensions such as `.jpg.md`.
-This plugin blocks the creation of files with double extensions such as `.jpg.md`.
+This plugin blocks the creation of files with double extension such as `.jpg.md`.
 
 ## Motivation
 
@@ -18,8 +15,9 @@ To prevent this, the plugin blocks the creation of markdown files when the filen
 -   **Automatic Block**: Blocks the creation of files with the `.{extension}.md` format.
 -   **Customizable Extension List**: You can define the extensions you want to target. (default: `["pdf", "jpg", "jpeg", "png", "webp"]`)
 -   **Works on Both Desktop and Mobile**: The plugin is compatible with both mobile and desktop versions of Obsidian.
--   **Automatic Block**: Blocks the creation of files with the `.{extension}.md` format.
--   **Customizable Extension List**: You can define the extensions you want to target. (default: `["pdf", "jpg", "jpeg", "png", "webp"]`)
--   **Works on Both Desktop and Mobile**: The plugin is compatible with both mobile and desktop versions of Obsidian.
 
-**Note**: This plugin does not affect existing files. Furthermore, it is designed not to detect extensions when renaming from existing files, considering cases where it is necessary to create notes with double extensions.
+## Installation
+
+Register and install `uoFishbox/obsidian-double-extension-blocker` using [BRAT](https://github.com/TfTHacker/obsidian42-brat).
+
+**Note**: This plugin does not affect existing files. Furthermore, it is designed not to detect extensions when renaming from existing files, considering cases where it is necessary to create notes with double extension.
