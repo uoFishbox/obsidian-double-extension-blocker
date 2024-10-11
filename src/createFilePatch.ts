@@ -15,6 +15,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 		around(vaultPrototype, {
 			create(original) {
 				return function (
+					this: Vault,
 					path: string,
 					data: string,
 					options?: DataWriteOptions
@@ -39,6 +40,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 			},
 			createBinary(original) {
 				return function (
+					this: Vault,
 					path: string,
 					data: ArrayBuffer,
 					options?: DataWriteOptions
