@@ -59,7 +59,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 	);
 };
 
-function blockFileCreation(path: string): void {
+function blockFileCreation(extension: string): void {
 	throw new Error(
 		`File creation has been blocked due to the file name containing a double extension (.${extension}.md).`
 	);
