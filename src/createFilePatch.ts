@@ -31,7 +31,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						NotifyBlockedFileCreation(plugin, error, path);
+						NotifyBlockedFileCreation(plugin, error);
 					}
 				};
 			},
@@ -54,7 +54,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						NotifyBlockedFileCreation(plugin, error, path);
+						NotifyBlockedFileCreation(plugin, error);
 					}
 				};
 			},
@@ -70,8 +70,7 @@ function blockFileCreation(extension: string): void {
 
 function NotifyBlockedFileCreation(
 	plugin: DoubleExtensionBlocker,
-	error: unknown,
-	path: string
+	error: unknown
 ): void {
 	if (error instanceof Error && plugin.settings.noticeEnabled) {
 		new Notice(error.message, 3000);
