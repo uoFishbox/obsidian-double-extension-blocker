@@ -12,6 +12,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 
 	plugin.register(
 		around(vaultPrototype, {
+			//  The patches for create and createBinary duplicate processing because the arguments are the same, but since the arguments for additional methods to be patched in the future may not be the same, the processing will not be combined.
 			create(original) {
 				return function (
 					path: string,
