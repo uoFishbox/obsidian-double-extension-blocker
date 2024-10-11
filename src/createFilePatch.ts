@@ -33,6 +33,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 						return original.call(this, path, data, options);
 					} catch (error) {
 						NotifyBlockedFileCreation(plugin, error);
+						return Promise.reject(error);
 					}
 				};
 			},
@@ -56,6 +57,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 						return original.call(this, path, data, options);
 					} catch (error) {
 						NotifyBlockedFileCreation(plugin, error);
+						return Promise.reject(error);
 					}
 				};
 			},
