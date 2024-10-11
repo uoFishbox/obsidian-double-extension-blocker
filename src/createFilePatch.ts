@@ -10,6 +10,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 		(ext) => ext !== "md"
 	);
 
+	// Register to be unloaded
 	plugin.register(
 		around(vaultPrototype, {
 			create(original) {
