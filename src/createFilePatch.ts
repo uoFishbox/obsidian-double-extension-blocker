@@ -61,7 +61,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 
 function blockFileCreation(path: string): void {
 	throw new Error(
-		`The creation of a markdown file with the double extension '${path}' was blocked.`
+		`File creation has been blocked due to the file name containing a double extension (.${extension}.md).`
 	);
 }
 
@@ -70,10 +70,7 @@ function NotifyBlockedFileCreation(
 	error: unknown,
 	path: string
 ): void {
-	if (error && plugin.settings.noticeEnabled) {
-		new Notice(
-			`The creation of a markdown file with the double extension '${path}' was blocked.`,
-			2500
-		);
+	if (error instanceof Error && plugin.settings.noticeEnabled) {
+		new Notice(error.message, 3000);
 	}
 }
