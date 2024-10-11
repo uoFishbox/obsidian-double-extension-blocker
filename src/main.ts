@@ -1,10 +1,15 @@
-import { Notice, Plugin } from "obsidian";
+import { App, Notice, Plugin, PluginManifest } from "obsidian";
 import { applyFilePatch } from "./createFilePatch";
 import { DEFAULT_SETTINGS, DoubleExtensionBlockerSettingTab } from "./settings";
 import { Settings } from "./types";
 
 export default class DoubleExtensionBlocker extends Plugin {
 	settings: Settings;
+
+	constructor(app: App, plugin: PluginManifest) {
+		super(app, plugin);
+		this.settings = {} as Settings;
+	}
 
 	async onload() {
 		await this.loadSettings();
