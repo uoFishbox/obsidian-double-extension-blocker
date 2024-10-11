@@ -4,7 +4,6 @@ import { Settings } from "./types";
 
 export const DEFAULT_SETTINGS: Settings = {
 	targetExtensions: ["pdf", "jpg", "jpeg", "png", "webp"],
-	noticeEnabled: true,
 };
 
 export class DoubleExtensionBlockerSettingTab extends PluginSettingTab {
@@ -32,19 +31,6 @@ export class DoubleExtensionBlockerSettingTab extends PluginSettingTab {
 					.onChange(async (value) => {
 						this.plugin.settings.targetExtensions =
 							value.split(",");
-						await this.plugin.saveSettings();
-					})
-			);
-
-		new Setting(containerEl)
-
-			.setName("Show notification when blocking")
-
-			.addToggle((toggle) =>
-				toggle
-					.setValue(this.plugin.settings.noticeEnabled)
-					.onChange(async (value) => {
-						this.plugin.settings.noticeEnabled = value;
 						await this.plugin.saveSettings();
 					})
 			);
