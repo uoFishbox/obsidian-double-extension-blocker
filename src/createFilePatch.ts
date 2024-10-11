@@ -1,5 +1,5 @@
 import { around } from "monkey-around";
-import { DataWriteOptions, Notice, Vault } from "obsidian";
+import { DataWriteOptions, Vault } from "obsidian";
 import DoubleExtensionBlocker from "./main";
 
 export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
@@ -33,7 +33,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						NotifyBlockedFileCreation(plugin, error);
+						// NotifyBlockedFileCreation(plugin, error);
 						return Promise.reject(error);
 					}
 				};
@@ -58,7 +58,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						NotifyBlockedFileCreation(plugin, error);
+						// NotifyBlockedFileCreation(plugin, error);
 						return Promise.reject(error);
 					}
 				};
@@ -73,11 +73,11 @@ function blockFileCreation(extension: string): void {
 	);
 }
 
-function NotifyBlockedFileCreation(
-	plugin: DoubleExtensionBlocker,
-	error: unknown
-): void {
-	if (error instanceof Error && plugin.settings.noticeEnabled) {
-		new Notice(error.message, 3000);
-	}
-}
+// function NotifyBlockedFileCreation(
+// 	plugin: DoubleExtensionBlocker,
+// 	error: unknown
+// ): void {
+// 	if (error instanceof Error && plugin.settings.noticeEnabled) {
+// 		new Notice(error.message, 2000);
+// 	}
+// }
