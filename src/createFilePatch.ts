@@ -18,7 +18,6 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 					data: string,
 					options?: DataWriteOptions
 				) {
-					let ext = "";
 					try {
 						for (const extension of targetextensions) {
 							if (
@@ -26,14 +25,14 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 									.toLowerCase()
 									.endsWith("." + extension + ".md")
 							) {
-								ext = extension;
+								const ext = extension;
 								blockFileCreation(ext);
 							}
 						}
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						NotifyBlockedFileCreation(plugin, error, ext);
+						NotifyBlockedFileCreation(plugin, error, path);
 					}
 				};
 			},
@@ -43,18 +42,17 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 					data: ArrayBuffer,
 					options?: DataWriteOptions
 				) {
-					let ext = "";
 					try {
 						for (const extension of targetextensions) {
 							if (path.endsWith("." + extension + ".md")) {
-								ext = extension;
+								const ext = extension;
 								blockFileCreation(ext);
 							}
 						}
 
 						return original.call(this, path, data, options);
 					} catch (error) {
-						NotifyBlockedFileCreation(plugin, error, ext);
+						NotifyBlockedFileCreation(plugin, error, path);
 					}
 				};
 			},
@@ -62,21 +60,21 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 	);
 };
 
-function blockFileCreation(blockedext: string): void {
+function blockFileCreation(path: string): void {
 	throw new Error(
-		`The creation of a file with the extension '.${blockedext}.md' is blocked`
+		`The creation of a markdown file with the double extension '${path}' was blocked.`
 	);
 }
 
 function NotifyBlockedFileCreation(
 	plugin: DoubleExtensionBlocker,
 	error: unknown,
-	blockedext: string
+	path: string
 ): void {
 	if (error && plugin.settings.noticeEnabled) {
 		new Notice(
-			`The creation of a file with the extension '.${blockedext}.md' is blocked`,
-			1500
+			`The creation of a markdown file with the double extension '${path}' was blocked.`,
+			2500
 		);
 	}
 }
