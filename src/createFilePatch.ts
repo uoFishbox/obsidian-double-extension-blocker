@@ -45,8 +45,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 					try {
 						for (const extension of targetextensions) {
 							if (path.endsWith("." + extension + ".md")) {
-								const ext = extension;
-								blockFileCreation(ext);
+								blockFileCreation(extension);
 							}
 						}
 
