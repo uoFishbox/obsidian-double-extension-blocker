@@ -6,7 +6,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 	const vaultPrototype = Vault.prototype;
 
 	// Remove "md" from the list of target extensions
-	const targetextensions = plugin.settings.targetExtensions.filter(
+	const targetExtensions = plugin.settings.targetExtensions.filter(
 		(ext) => ext !== "md"
 	);
 
@@ -19,7 +19,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 					options?: DataWriteOptions
 				) {
 					try {
-						for (const extension of targetextensions) {
+						for (const extension of targetExtensions) {
 							if (
 								path
 									.toLowerCase()
@@ -42,7 +42,7 @@ export const applyFilePatch = (plugin: DoubleExtensionBlocker) => {
 					options?: DataWriteOptions
 				) {
 					try {
-						for (const extension of targetextensions) {
+						for (const extension of targetExtensions) {
 							if (
 								path
 									.toLowerCase()
