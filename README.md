@@ -20,4 +20,4 @@ To prevent this, the plugin blocks the creation of markdown files when the filen
 
 You can use [BRAT](https://github.com/TfTHacker/obsidian42-brat) to register and install `uoFishbox/obsidian-double-extension-blocker`.
 
-**Note**: This plugin does not affect existing files. Furthermore, it is designed not to detect extensions when renaming from existing files, considering cases where it is necessary to create notes with double extension.
+**Note**: This plugin does not modify existing files. Additionally, it is designed to ignore file extensions when renaming existing files, accommodating scenarios where notes with double extensions need to be created.
