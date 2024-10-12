@@ -16,8 +16,8 @@ To prevent this, the plugin blocks the creation of markdown files when the filen
 -   **Customizable Extension List**: You can define the extensions you want to target. (default: `["pdf", "jpg", "jpeg", "png", "webp"]`)
 -   **Works on Both Desktop and Mobile**: The plugin is compatible with both mobile and desktop versions of Obsidian.
 
+**Note**: This plugin does not modify existing files. Additionally, it is designed to ignore file extensions when renaming existing files, accommodating scenarios where notes with double extensions need to be created.
+
 ## Installation
 
 You can use [BRAT](https://github.com/TfTHacker/obsidian42-brat) to register and install `uoFishbox/obsidian-double-extension-blocker`.
-
-**Note**: This plugin does not modify existing files. Additionally, it is designed to ignore file extensions when renaming existing files, accommodating scenarios where notes with double extensions need to be created.
